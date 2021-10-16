@@ -82,6 +82,9 @@ jobs:
     - name: cat inv
       run: pwd && cat inv
       
+    - name: Install vagrant and virtualbox
+      run: apt install -y virtualbox vagrant
+      
     - name: Run ping against the host
       uses: RvuvuzelaM/ansible-cli-github-action@1
       with:
