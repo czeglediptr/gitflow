@@ -84,10 +84,10 @@ jobs:
 #    runs-on: ubuntu-latest
 #    environment: production
     
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#    steps:
+#    - name: Checkout
+#      uses: actions/checkout@v2
     
-    - name: Ansible
-      uses: dawidd6/action-ansible-playbook@v2
+#    - name: Ansible
+#      uses: dawidd6/action-ansible-playbook@v2
      
