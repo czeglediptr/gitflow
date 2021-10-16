@@ -1,0 +1,2 @@
+[myhost]
+${ip_addr}

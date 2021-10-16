@@ -1,4 +1,4 @@
-resource "local_file" "foo" {
-  content  = "foo!"
-  filename = "foo.bar"
+resource "local_file" "inv" {
+  content  = "${path.module}/backends.tpl", {ip_addr = 10.0.0.5}
+  filename = "inv"
 }
