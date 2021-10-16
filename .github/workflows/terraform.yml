@@ -44,12 +44,15 @@ jobs:
       
     - name: Terraform Apply
       run: terraform apply -auto-approve
+      
+    - name: list content
+      run: ls -la
 
     - name: upload foo
       uses: actions/upload-artifact@v2
       with:
-          name: foo.bar
-          path: foo.bar      
+          name: inv
+          path: inv      
 
 #    - name: upload inv
 #      uses: actions/upload-artifact@v2
@@ -61,6 +64,7 @@ jobs:
     name: 'Ansible'
     runs-on: ubuntu-latest
     environment: production
+    needs: [terraform]
     
     defaults:
       run:
