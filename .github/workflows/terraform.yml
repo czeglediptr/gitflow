@@ -68,7 +68,26 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: echo "valami" >> inv
+      run: echo "[host]\n 10.0.0.1" >> inv
       
     - name: cat inv
       run: cat inv
+    
+    - name: upload inv
+      uses: actions/upload-artifact@v2
+      with:
+          name: inv
+          path: inv
+
+#  ansible:
+#    name: 'Ansible'
+#    runs-on: ubuntu-latest
+#    environment: production
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Ansible
+      uses: dawidd6/action-ansible-playbook@v2
+     
