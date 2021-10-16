@@ -71,7 +71,7 @@ jobs:
       run: echo -e "[myhost]\n10.0.0.1" >> inv
       
     - name: cat inv
-      run: cat inv
+      run: pwd && cat inv
     
     - name: upload inv
       uses: actions/upload-artifact@v2
@@ -92,4 +92,6 @@ jobs:
       uses: actions/download-artifact@v2
       with:
           name: inv
-     
+          
+    - name: cat inv
+      run: pwd && cat inv
