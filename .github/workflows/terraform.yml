@@ -57,6 +57,6 @@ jobs:
       run: pwd && cat inv
       
     - name: Run ping against the host
-      uses: actions/ansible-cli-action@v1
+      uses: ansible/ansible-lint-action@master
       with:
           command: "ansible -i inv myhost -m ping"
