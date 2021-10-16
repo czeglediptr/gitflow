@@ -97,6 +97,6 @@ jobs:
       run: pwd && cat inv
       
     - name: Run ping against the host
-      uses: tomasnorre/ansible-cli-action@0.0.2
+      uses: actions/ansible-cli-action@latest
       with:
           command: "ansible -i inv myhost -m ping"
