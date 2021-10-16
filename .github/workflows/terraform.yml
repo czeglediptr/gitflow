@@ -22,18 +22,40 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: echo -e "[myhost]\n10.0.0.1" >> inv
-      
-    - name: cat inv
-      run: pwd && cat inv
+#    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+#    - name: Host file test
+#      run: echo -e "[myhost]\n10.0.0.1" >> inv
+#      
+#    - name: cat inv
+#      run: pwd && cat inv
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+          terraform_version: 1.0.9
     
-    - name: upload inv
+    - name: Terraform Init
+      id: init
+      run: terraform init
+      
+    - name: Terraform plan
+      id: plan
+      run: terraform plan
+      
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+    - name: upload foo
       uses: actions/upload-artifact@v2
       with:
-          name: inv
-          path: inv
+          name: foo.bar
+          path: foo.bar      
+
+#    - name: upload inv
+#      uses: actions/upload-artifact@v2
+#      with:
+#          name: inv
+#          path: inv
 
   ansible:
     name: 'Ansible'
