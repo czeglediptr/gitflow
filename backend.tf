@@ -1,6 +1,6 @@
 terraform {
   backend "remote" {
-    organization = "example-org-513fd2"
+    organization = "no-org-for-now"
 
     workspaces {
       name = "getting-started"
