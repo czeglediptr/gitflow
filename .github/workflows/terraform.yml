@@ -43,6 +43,9 @@ jobs:
       id: plan
       run: terraform plan
       
+    - name: Check stdout of tf
+      run: echo ${{ steps.plan.outputs.stdout }}
+      
     - name: Terraform Apply
       run: terraform apply -auto-approve
       
