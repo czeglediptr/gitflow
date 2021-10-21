@@ -51,7 +51,7 @@ jobs:
 #      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
     - name: get state
       id: statepull
-      run: terrafrom state pull
+      run: terraform state pull
       
     - name: list content
       run: ls -la
