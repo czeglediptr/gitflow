@@ -56,6 +56,9 @@ jobs:
     - name: list content
       run: ls -la
       
+    - name: cat content
+      run: cat test.json  
+      
     - name: Setup Nodejs
       uses: actions/setup-node@v2
       with:
