@@ -62,7 +62,7 @@ jobs:
     - name: Setup Nodejs
       uses: actions/setup-node@v2
       with:
-          node-version: '14'
+          node-version: '10'
           
     - name: Parse test.json
       run: node parse_json.js >> inv2
