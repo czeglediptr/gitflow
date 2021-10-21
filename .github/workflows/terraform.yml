@@ -52,26 +52,12 @@ jobs:
     - name: get state
       id: statepull
       run: terraform state pull >> test.json
-      
-    - name: list content
-      run: ls -la
-      
-    - name: cat content
-      run: cat test.json  
-      
-    - name: Setup Nodejs
-      uses: actions/setup-node@v2
-      with:
-          node-version: '10'
-          
-    - name: Parse test.json
-      run: node parse_json.js >> inv2
 
-    - name: upload inv2
+    - name: upload test.json
       uses: actions/upload-artifact@v2
       with:
-          name: inv2
-          path: inv2
+          name: test.json
+          path: test.json
 
   ansible:
     name: 'Ansible'
@@ -90,7 +76,15 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
-          name: inv2
+          name: test.json
           
     - name: cat inv
-      run: pwd && cat inv2 
+      run: pwd && cat test.json
+      
+    - name: Setup Nodejs
+      uses: actions/setup-node@v2
+      with:
+          node-version: '10'
+          
+    - name: Parse test.json
+      run: node parse_json.js
