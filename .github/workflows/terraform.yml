@@ -56,11 +56,11 @@ jobs:
     - name: list content
       run: ls -la
 
-    - name: upload inv
+    - name: upload inv2
       uses: actions/upload-artifact@v2
       with:
-          name: inv
-          path: inv
+          name: inv2
+          path: inv2
 
   ansible:
     name: 'Ansible'
@@ -79,7 +79,7 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
-          name: inv
+          name: inv2
           
     - name: cat inv
-      run: pwd && cat inv
+      run: pwd && cat inv2
