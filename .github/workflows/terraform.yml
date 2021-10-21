@@ -82,4 +82,4 @@ jobs:
           name: inv2
           
     - name: cat inv
-      run: pwd && cat inv2 | awk '/inv/,/"content"/ {print}' 
+      run: pwd && cat inv2 
