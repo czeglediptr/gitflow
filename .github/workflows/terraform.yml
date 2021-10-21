@@ -47,8 +47,11 @@ jobs:
       id: apply
       run: terraform apply -auto-approve
       
-    - name: Check stdout
-      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
+#    - name: Check stdout
+#      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
+    - name: get state
+      id: statepull
+      run: terrafrom state pull
       
     - name: list content
       run: ls -la
