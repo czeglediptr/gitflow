@@ -1,5 +1,4 @@
 [myhost]
-${ip_addr}
-%{ for addr in ip_addrs ~}
+%{ for addr in ip_addr ~}
 ${addr}
 %{ endfor ~}
