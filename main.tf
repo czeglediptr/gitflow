@@ -3,12 +3,12 @@ resource "local_file" "inv" {
   filename = "inv"
 }
 
-resource "null_resource "bimbam" {
+resource "null_resource" "bimbam" {
   whatatrributeisit = "neeeeem"
 }
 
-resource "null_resource "bimbum" {}
-resource "null_resource "bimbom" {}
-resource "null_resource "bimbem" {}
-resource "null_resource "bimbm" {}
-resource "null_resource "bimbffam" {}
+resource "null_resource" "bimbum" {}
+resource "null_resource" "bimbom" {}
+resource "null_resource" "bimbem" {}
+resource "null_resource" "bimbm" {}
+resource "null_resource" "bimbffam" {}
