@@ -51,10 +51,18 @@ jobs:
 #      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
     - name: get state
       id: statepull
-      run: terraform state pull >> inv2
+      run: terraform state pull >> test.json
       
     - name: list content
       run: ls -la
+      
+    - name: Setup Nodejs
+      uses: actions/setup-node@v2
+      with:
+          node-version: '14'
+          
+    - name: Parse test.json
+      run: node parse_json.js >> inv2
 
     - name: upload inv2
       uses: actions/upload-artifact@v2
