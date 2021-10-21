@@ -32,6 +32,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
           terraform_version: 1.0.9
     
     - name: Terraform Init
@@ -52,13 +53,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
           name: inv
-          path: inv      
-
-    - name: init tf cloud 
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-
+          path: inv
 
   ansible:
     name: 'Ansible'
