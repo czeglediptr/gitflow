@@ -48,7 +48,7 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Check stdout
-      run: echo ${{ steps.plan.outputs.stdout }} >> inv
+      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
       
     - name: list content
       run: ls -la
