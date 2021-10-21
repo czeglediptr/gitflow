@@ -3,9 +3,7 @@ resource "local_file" "inv" {
   filename = "inv"
 }
 
-resource "null_resource" "bimbam" {
-  whatatrributeisit = "neeeeem"
-}
+resource "null_resource" "bimbam" {}
 
 resource "null_resource" "bimbum" {}
 resource "null_resource" "bimbom" {}
