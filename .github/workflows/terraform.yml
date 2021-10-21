@@ -81,7 +81,7 @@ jobs:
     - name: cat inv
       run: pwd && cat test.json
 
-    - name: It's soo sed
+    - name: It is soo sed
       run: sed -i '1s/^\xEF\xBB\xBF//' test.json
       
     - name: Setup Nodejs
