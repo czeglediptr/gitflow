@@ -48,17 +48,17 @@ jobs:
     - name: list content
       run: ls -la
 
-    - name: upload foo
+    - name: upload inv
       uses: actions/upload-artifact@v2
       with:
           name: inv
           path: inv      
 
-#    - name: upload inv
-#      uses: actions/upload-artifact@v2
-#      with:
-#          name: inv
-#          path: inv
+    - name: init tf cloud 
+      uses: hashicorp/setup-terraform@v1
+      with:
+        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
 
   ansible:
     name: 'Ansible'
