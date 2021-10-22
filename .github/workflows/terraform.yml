@@ -52,16 +52,16 @@ jobs:
       run: terraform state pull
       
     - name: check state
-      run:  echo ${{ steps.statepull.outputs.stdout }}
+      run:  echo "${{ steps.statepull.outputs.stdout }}" >> test.json
       
-#    - name: check state
-#      run:  cat -vte test.json
+    - name: check state
+      run:  cat -vte test.json
 
-#    - name: upload test.json
-#      uses: actions/upload-artifact@v2
-#      with:
-#          name: test.json
-#          path: test.json
+    - name: upload test.json
+      uses: actions/upload-artifact@v2
+      with:
+          name: test.json
+          path: test.json
 
   ansible:
     name: 'Ansible'
