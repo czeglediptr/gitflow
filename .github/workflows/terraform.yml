@@ -46,23 +46,22 @@ jobs:
     - name: Terraform Apply
       id: apply
       run: terraform apply -auto-approve
-      
 
     - name: get state
       id: statepull
-      run: terraform state pull >> test_state.json
+      run: terraform state pull
       
     - name: check state
-      run:  grep -vE "/home/runner/|^$" test_state.json > test.json
+      run:  echo "${{ steps.statepull.outputs.stdout }}"
       
-    - name: check state
-      run:  cat -vte test.json
+#    - name: check state
+#      run:  cat -vte test.json
 
-    - name: upload test.json
-      uses: actions/upload-artifact@v2
-      with:
-          name: test.json
-          path: test.json
+#    - name: upload test.json
+#      uses: actions/upload-artifact@v2
+#      with:
+#          name: test.json
+#          path: test.json
 
   ansible:
     name: 'Ansible'
