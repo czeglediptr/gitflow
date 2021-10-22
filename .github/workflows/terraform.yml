@@ -56,7 +56,7 @@ jobs:
       run:  grep -v "/home/runner/" test_state.json > test.json
       
     - name: check state
-      run:  cat test.json
+      run:  cat -vte test.json
 
     - name: upload test.json
       uses: actions/upload-artifact@v2
