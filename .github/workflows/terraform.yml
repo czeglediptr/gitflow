@@ -52,7 +52,7 @@ jobs:
       run: terraform state pull
       
     - name: check state
-      run:  echo "${{ steps.statepull.outputs.stdout }}" >> test.json
+      run:  echo ${{ steps.statepull.outputs.stdout }} > test.json
       
     - name: check state
       run:  cat -vte test.json
