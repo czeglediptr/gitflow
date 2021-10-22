@@ -53,7 +53,7 @@ jobs:
       run: terraform state pull >> test_state.json
       
     - name: check state
-      run:  grep -v "/home/runner/" test_state.json > test.json
+      run:  grep -vE "/home/runner/|^$" test_state.json > test.json
       
     - name: check state
       run:  cat -vte test.json
