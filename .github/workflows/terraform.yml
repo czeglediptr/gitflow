@@ -82,7 +82,7 @@ jobs:
           name: test.json
           
     - name: cat inv
-      run: pwd && cat test.json
+      run: pwd && cat test.json | grep -v home
 
     - name: It is soo sed
       run: sed -i '1s/^\xEF\xBB\xBF//' test.json
