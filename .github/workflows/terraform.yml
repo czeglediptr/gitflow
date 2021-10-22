@@ -47,14 +47,13 @@ jobs:
       id: apply
       run: terraform apply -auto-approve
       
-#    - name: Check stdout
-#      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
+
     - name: get state
       id: statepull
       run: terraform state pull >> test_state.json
       
     - name: check state
-      run:  grep -v home test_state.json > test.json
+      run:  grep -v "/home/runner/" test_state.json > test.json
       
     - name: check state
       run:  cat test.json
