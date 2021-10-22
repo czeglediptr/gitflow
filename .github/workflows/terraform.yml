@@ -54,7 +54,10 @@ jobs:
       run: terraform state pull >> test.json
       
     - name: check state
-      run:  sed -n 'l' test.json
+      run:  cat test.json
+      
+    - name: check state
+      run:  cat test.json | grep -v home
 
     - name: upload test.json
       uses: actions/upload-artifact@v2
@@ -81,8 +84,8 @@ jobs:
       with:
           name: test.json
           
-    - name: cat inv
-      run: pwd && cat test.json | grep -v home
+    - name: cat test.json
+      run: cat test.json
 
     - name: It is soo sed
       run: sed -i '1s/^\xEF\xBB\xBF//' test.json
