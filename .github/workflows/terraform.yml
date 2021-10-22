@@ -84,10 +84,7 @@ jobs:
           name: test.json
           
     - name: cat test.json
-      run: cat test.json
-
-    - name: It is soo sed
-      run: sed -i '1s/^\xEF\xBB\xBF//' test.json
+      run: cat -vte test.json
       
     - name: Setup Nodejs
       uses: actions/setup-node@v2
