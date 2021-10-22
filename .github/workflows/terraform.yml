@@ -49,17 +49,17 @@ jobs:
 
     - name: get state
       id: statepull
-      run: terraform state pull > test.json
+      run: terraform state pull > state.json
       
       
     - name: check state
-      run:  cat -vte test.json
+      run:  cat -vte state.json
 
     - name: upload test.json
       uses: actions/upload-artifact@v2
       with:
-          name: test.json
-          path: test.json
+          name: state.json
+          path: state.json
 
   ansible:
     name: 'Ansible'
@@ -78,13 +78,13 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
-          name: test.json
+          name: state.json
           
     - name: filter json
-      run: grep -vE "/home|^$|^:" test.json > test.json
+      run: grep -vE "/home|^$|^:" state.json > test.json
           
     - name: cat test.json
-      run: cat -vte state.json
+      run: cat -vte test.json
       
     - name: Setup Nodejs
       uses: actions/setup-node@v2
