@@ -51,13 +51,13 @@ jobs:
 #      run: echo "${{ steps.plan.outputs.stdout }}" >> inv
     - name: get state
       id: statepull
-      run: terraform state pull >> test.json
+      run: terraform state pull >> test_state.json
+      
+    - name: check state
+      run:  grep -v home test_state.json > test.json
       
     - name: check state
       run:  cat test.json
-      
-    - name: check state
-      run:  cat test.json | grep -v home
 
     - name: upload test.json
       uses: actions/upload-artifact@v2
