@@ -51,15 +51,25 @@ jobs:
       id: statepull
       run: terraform state pull > state.json
       
-      
     - name: check state
       run:  cat -vte state.json
+      
+    - name: filter json
+      run: grep -vE "/home|^$|^:" state.json > test.json 
+      
+    - name: Setup Nodejs
+      uses: actions/setup-node@v2
+      with:
+          node-version: '14'
+          
+    - name: Parse test.json
+      run: node parse_json.js > inv.ini
 
     - name: upload test.json
       uses: actions/upload-artifact@v2
       with:
-          name: state.json
-          path: state.json
+          name: inv.ini
+          path: inv.ini
 
   ansible:
     name: 'Ansible'
@@ -78,18 +88,8 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v2
       with:
-          name: state.json
+          name: inv.ini
           
-    - name: filter json
-      run: grep -vE "/home|^$|^:" state.json > test.json
-          
-    - name: cat test.json
-      run: cat -vte test.json
+    - name: cat inv.ini
+      run: cat -vte inv.ini
       
-    - name: Setup Nodejs
-      uses: actions/setup-node@v2
-      with:
-          node-version: '14'
-          
-    - name: Parse test.json
-      run: node parse_json.js
