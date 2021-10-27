@@ -53,7 +53,7 @@ jobs:
       # > state.json
       
     - name: check state
-      run:  echo ${{ steps.statepull.outputs.terraform-state }}
+      run:  echo "${{ steps.statepull.outputs.terraform-state }}"
       
     - name: filter json
       run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json 
