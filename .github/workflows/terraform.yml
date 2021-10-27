@@ -49,7 +49,7 @@ jobs:
 
     - name: get state
       id: statepull
-      run: echo "::set-output name=terraform-state--warnings-as-errors::$(terraform state pull)\n"
+      run: echo "::set-output name=terraform-state::$(terraform state pull)"
       # > state.json
       
     - name: check state
