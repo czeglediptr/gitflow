@@ -49,13 +49,14 @@ jobs:
 
     - name: get state
       id: statepull
-      run: terraform state pull > state.json
+      run: echo "::set-output name=terraform-state--warnings-as-errors::$(terraform state pull)\n"
+      # > state.json
       
     - name: check state
-      run:  cat -vte state.json
+      run:  echo ${{ steps.statepull.outputs.terraform-state }}
       
     - name: filter json
-      run: grep -vE "/home|^$|^:" state.json > test.json 
+      run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json 
       
     - name: Setup Nodejs
       uses: actions/setup-node@v2
