@@ -49,23 +49,19 @@ jobs:
 
     - name: get state
       id: statepull
-      run: echo "::set-output name=terraform-state::$(terraform state pull)"
-      # > state.json
+      run: terraform state pull > state.json
       
-    - name: check state
-      run:  echo "${{ steps.statepull.outputs.terraform-state }}"
+#     - name: filter json
+#       run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json
       
-    - name: filter json
-      run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json
-      
-    - name: cat test.json
-      run: cat test.json
+    - name: cat state.json
+      run: cat state.json
 
     - name: upload json
       uses: actions/upload-artifact@v2
       with:
-          name: test.json
-          path: test.json
+          name: state.json
+          path: state.json
 #     - name: Setup Nodejs
 #       uses: actions/setup-node@v2
 #       with:
