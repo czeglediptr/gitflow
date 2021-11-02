@@ -60,40 +60,45 @@ jobs:
       
     - name: cat test.json
       run: cat test.json
-      
-    - name: Setup Nodejs
-      uses: actions/setup-node@v2
-      with:
-          node-version: '14'
-          
-    - name: Parse test.json
-      run: node parse_json.js > inv.ini
 
-    - name: upload test.json
+    - name: upload json
       uses: actions/upload-artifact@v2
       with:
-          name: inv.ini
-          path: inv.ini
-
-  ansible:
-    name: 'Ansible'
-    runs-on: ubuntu-latest
-    environment: production
-    needs: [terraform]
-    
-    defaults:
-      run:
-        shell: bash
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-          name: inv.ini
+          name: test.json
+          path: test.json
+#     - name: Setup Nodejs
+#       uses: actions/setup-node@v2
+#       with:
+#           node-version: '14'
           
-    - name: cat inv.ini
-      run: cat -vte inv.ini
+#     - name: Parse test.json
+#       run: node parse_json.js > inv.ini
+
+#     - name: upload test.json
+#       uses: actions/upload-artifact@v2
+#       with:
+#           name: inv.ini
+#           path: inv.ini
+
+#   ansible:
+#     name: 'Ansible'
+#     runs-on: ubuntu-latest
+#     environment: production
+#     needs: [terraform]
+    
+#     defaults:
+#       run:
+#         shell: bash
+    
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
+    
+#     - name: Download artifact
+#       uses: actions/download-artifact@v2
+#       with:
+#           name: inv.ini
+          
+#     - name: cat inv.ini
+#       run: cat -vte inv.ini
       
