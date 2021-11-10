@@ -47,7 +47,7 @@ jobs:
       run: terraform apply -auto-approve
       
     - name: Parse test.json
-      run: node parse_json.js > inv.ini
+      run: node parse_json.js
 
     - name: get state
       id: statepull
