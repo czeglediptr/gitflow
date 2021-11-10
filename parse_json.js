@@ -31,4 +31,4 @@ exec("terraform state pull", (error, stdout, stderr) => {
 //   }
 // }
 
-//console.log(jsonData.resources[0].instances[0].attributes.content);
+//console.log(jsonData.resources[0].instances[0].attributes.content)
