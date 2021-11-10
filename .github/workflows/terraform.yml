@@ -22,12 +22,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-#    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-#    - name: Host file test
-#      run: echo -e "[myhost]\n10.0.0.1" >> inv
-#      
-#    - name: cat inv
-#      run: pwd && cat inv
+    - name: Setup Nodejs
+      uses: actions/setup-node@v2
+      with:
+         node-version: '14'
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
