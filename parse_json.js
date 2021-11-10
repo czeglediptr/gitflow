@@ -13,7 +13,7 @@ exec("terraform state pull", (error, stdout, stderr) => {
     console.log(`stdout: ${stdout}`);
 });
 
-let jsonData = require('./test.json');
+//let jsonData = require('./test.json');
 
 
 for (const [cucc, value] of Object.entries(jsonData)) {
