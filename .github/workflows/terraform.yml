@@ -45,38 +45,22 @@ jobs:
     - name: Terraform Apply
       id: apply
       run: terraform apply -auto-approve
-      
-    - name: Parse test.json
-      run: node parse_json.js
 
     - name: get state
       id: statepull
-      run: terraform state pull > state.json
+      run: terraform state pull | tee state.json
       
 #     - name: filter json
 #       run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json
       
-    - name: cat state.json
-      run: cat state.json
+    # - name: cat state.json
+    #   run: cat state.json
 
     - name: upload json
       uses: actions/upload-artifact@v2
       with:
           name: state.json
           path: state.json
-#     - name: Setup Nodejs
-#       uses: actions/setup-node@v2
-#       with:
-#           node-version: '14'
-          
-#     - name: Parse test.json
-#       run: node parse_json.js > inv.ini
-
-#     - name: upload test.json
-#       uses: actions/upload-artifact@v2
-#       with:
-#           name: inv.ini
-#           path: inv.ini
 
 #   ansible:
 #     name: 'Ansible'
