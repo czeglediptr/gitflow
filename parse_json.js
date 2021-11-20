@@ -13,7 +13,7 @@
 //     console.log(`stdout: ${stdout}`);
 // });
 
-let jsonData = require('./test.json');
+let jsonData = require('./state2.json');
 
 
 for (const [cucc, value] of Object.entries(jsonData)) {
