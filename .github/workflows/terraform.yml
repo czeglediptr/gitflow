@@ -48,13 +48,10 @@ jobs:
 
     - name: get state
       id: statepull
-      run: terraform state pull > state2.json
-      
-#     - name: filter json
-#       run: echo ${{ steps.statepull.outputs.terraform-state }} | tee test.json #grep -vE "/home|^$|^:" state.json > test.json
-      
-    # - name: cat state.json
-    #   run: cat state.json
+      run: terraform state pull > state.json
+
+    - name: parse json
+      run: node parse_json.js state.json > state2.json
 
     - name: upload json
       uses: actions/upload-artifact@v2
