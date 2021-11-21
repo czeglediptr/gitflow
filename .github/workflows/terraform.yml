@@ -50,16 +50,17 @@ jobs:
       id: statepull
       run: terraform state pull | tee state.json
 
-    - name: upload json
-      uses: actions/upload-artifact@v2
-      with:
-          name: state.json
-          path: state.json
+    # - name: upload json
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #       name: state.json
+    #       path: state.json
     
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-          name: state.json
+    # - name: Download artifact
+    #   uses: actions/download-artifact@v2
+    #   with:
+    #       name: state.json
+    
     - name: parse json
       run: node parse_json.js state.json > state2.json
 
