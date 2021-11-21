@@ -55,7 +55,11 @@ jobs:
       with:
           name: state.json
           path: state.json
-
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+          name: state.json
     - name: parse json
       run: node parse_json.js state.json > state2.json
 
