@@ -48,7 +48,7 @@ jobs:
 
     - name: get state
       id: statepull
-      run: terraform state pull | tee state.json
+      run: terraform state pull > state.json
 
     # - name: upload json
     #   uses: actions/upload-artifact@v2
